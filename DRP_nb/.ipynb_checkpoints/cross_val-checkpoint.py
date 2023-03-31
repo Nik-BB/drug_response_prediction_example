@@ -59,7 +59,7 @@ def run_cv_cblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128,
     
     Returns
     -------
-    loss, val_loss, val_mae, 
+    loss, val_loss, val_mae, train_val_cls
     val_loss_mm: loss of mean model benchmark
     train_val_cls: cls used for validation
     '''
@@ -85,7 +85,7 @@ def run_cv_cblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128,
     #these cell lines
     for train_c_i, val_c_i in cv.split(u_cells):
         if verbos == 1:
-            print(i / (k * p))
+            print(f'{(i / (k * p) * 100)}% complete')
         p_train_cells, val_cells = u_cells[train_c_i], u_cells[val_c_i]
         train_val_cls[0].append(p_train_cells)
         train_val_cls[1].append(val_cells)
