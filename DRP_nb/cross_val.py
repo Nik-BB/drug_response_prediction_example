@@ -59,8 +59,7 @@ def run_cv_cblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128,
     
     Returns
     -------
-    loss, val_loss, val_mae, train_val_cls
-    val_loss_mm: loss of mean model benchmark
+    loss, val_loss, val_mae,
     train_val_cls: cls used for validation
     '''
     cv = sklearn.model_selection.RepeatedKFold(
@@ -70,7 +69,6 @@ def run_cv_cblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128,
     loss = []
     val_loss = []
     val_mae = []
-    val_loss_mm = []
     train_val_cls = ([], [])
     #x_pp, x_drug = x
     
@@ -122,7 +120,7 @@ def run_cv_cblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128,
         val_loss.append(hist.history['val_loss'])
         val_mae.append(hist.history['val_mae'])
         
-    return loss, val_loss, val_mae, val_loss_mm, train_val_cls
+    return loss, val_loss, val_mae, train_val_cls
 
 
 def run_cv_dblind(m_func, x, y, hp, epochs=10, k=10, p=1, batch_size=128, 
